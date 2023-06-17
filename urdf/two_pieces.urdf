@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<robot name="index">
+
+	<material name="orange">
+		<color rgba="1 0.5 0 1"/>
+	</material>
+	<material name="gold">
+		<color rgba="1 0.7 0 1"/>
+	</material>
+	<material name="coral">
+		<color rgba="1 0.5 0.2 1"/>
+	</material>
+
+  	<link name="paume">
+        <visual>
+            <geometry>
+                <box size="0.1 0.08 0.03"/>
+            </geometry>
+			<material name="gold"/>
+        </visual>
+ 	 </link>
+
+    <link name="phalange">
+        <visual>
+            <geometry>
+                <cylinder length="0.02" radius="0.01"/>
+            </geometry>
+            <material name="coral"/>
+            <origin rpy="0 1.57 0" xyz="0.01 0.0 0"/>
+        </visual>
+    </link>
+	<!-- <joint name="paume_to_phalange" type="fixed">
+        <parent link="paume"/>
+        <child link="phalange"/>
+        <origin rpy="0 0 0" xyz="0.05 -0.03 0"/>
+    </joint> -->
+  	<joint name="paume_to_phalange" type="revolute">
+		<axis xyz="0 1 0"/>
+		<limit effort="1000" upper="0" lower="1.57" velocity="0.5"/>
+    		<parent link="paume"/>
+    		<child link="phalange"/>
+		<origin rpy="0 0 0" xyz="0.05 -0.03 0"/>
+  	</joint>
+
+</robot>
